@@ -39,6 +39,7 @@ int main()
             printf("Please enter a number of samples (1-100): ");
             scanf("%d", &num_samples);
             for (uint8_t i = 0; i < num_samples; i++) {
+                sleep_ms(9);
                 uint16_t voltage = adc_read();
                 double volts = (voltage / 4095.00) * 3.3;
                 //printf("%d %d", voltage, volts);
