@@ -198,10 +198,9 @@ int main() {
         for (uint32_t i=0; i<len; i++) {
             uint32_t address = i*4;
             buffer[i] = read_spi_ram(address);
-            printf("%f\n", buffer[i]);
+            //printf("%f\n", buffer[i]);
             uint16_t converted = (uint16_t)((buffer[i] /3.3) * 1000);
             //printf("%d\n", converted);
-
             uint8_t data[2];
             data[0] = 0b01110000;
             data[1] = 0b00000000;
