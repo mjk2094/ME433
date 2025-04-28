@@ -56,16 +56,25 @@ int main()
     uint8_t time_elapsed[100];
     uint8_t str[100];
     uint8_t str2[100];
-    sprintf(str,"Abcdefghijklmnop");
-    sprintf(str2,"qrstuvwxyz");
+    sprintf(str,"How many cats are you");
+    sprintf(str2,"gonna have");
 
     unsigned int t1=0;
     unsigned int t2=0;
     double time=0;
     double frames = 0;
-
+    sleep_ms(2000);
     write_string(str,1,1);
-        write_string(str2,1,10);
+    write_string(str2,1,10);
+
+    uint8_t cats[100];
+
+    uint8_t i=1;
+    while(1) {
+        sprintf(cats,"%d",i);
+        write_string(cats,1,20);
+        i++;
+    }
 
     while (true) {
         t1 = to_us_since_boot(get_absolute_time());
