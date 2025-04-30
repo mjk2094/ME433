@@ -28,22 +28,28 @@ set(PICO_BOARD pico2 CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(multicore_fifo_irqs C CXX ASM)
+project(hello_multicore C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(multicore_fifo_irqs
-        multicore_fifo_irqs.c
+add_executable(hello_multicore
+        HW9.c
         )
 
-target_link_libraries(multicore_fifo_irqs
+# Add pico_multicore which is required for multicore functionality
+target_link_libraries(hello_multicore
+        pico_stdlib
         pico_multicore
-        pico_stdlib)
+        hardware_adc)
 
 # create map/bin/hex file etc.
-pico_add_extra_outputs(multicore_fifo_irqs)
+pico_add_extra_outputs(hello_multicore)
+
+pico_enable_stdio_usb(hello_multicore 1)
+pico_enable_stdio_uart(hello_multicore 0)
+
 
 # add url via pico_set_program_url
