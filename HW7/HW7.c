@@ -46,6 +46,7 @@ int main()
     gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
     gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
     ssd1306_setup();
+    printf("ROSIE\n");
 
     adc_init();
     adc_gpio_init(26);  

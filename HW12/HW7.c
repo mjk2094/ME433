@@ -5,6 +5,7 @@
 #include "ssd1306.h"
 #include "font.h"
 #include "hardware/adc.h"
+#include "HW7.h"
 
 // I2C defines
 // This example will use I2C0 on GPIO8 (SDA) and GPIO9 (SCL) running at 400KHz.
