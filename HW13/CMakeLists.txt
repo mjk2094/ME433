@@ -28,35 +28,36 @@ set(PICO_BOARD pico2 CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(HW12 C CXX ASM)
+project(HW11 C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(HW12 HW12.c )
+add_executable(HW11 HW11.c HW7.c ssd1306.c)
 
-pico_set_program_name(HW12 "HW12")
-pico_set_program_version(HW12 "0.1")
+pico_set_program_name(HW11 "HW11")
+pico_set_program_version(HW11 "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(HW12 0)
-pico_enable_stdio_usb(HW12 0)
+pico_enable_stdio_uart(HW11 0)
+pico_enable_stdio_usb(HW11 1)
 
 # Add the standard library to the build
-target_link_libraries(HW12
-        pico_stdlib
-        hardware_i2c
-        hardware_pwm)
+target_link_libraries(HW11
+        pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(HW12 PRIVATE
+target_include_directories(HW11 PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
-pico_add_extra_outputs(HW12)
+# Add any user requested libraries
+target_link_libraries(HW11 
+        hardware_i2c
+        hardware_adc
+        )
 
-pico_enable_stdio_uart(HW12 0)
-pico_enable_stdio_usb(HW12 1)
+pico_add_extra_outputs(HW11)
 
